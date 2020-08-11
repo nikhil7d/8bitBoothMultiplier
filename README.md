@@ -1,4 +1,4 @@
-# 8bitBoothMultiplier
+# 8bit Booth Multiplier
 Booth Multiplication using Verilog that multiplies two signed binary number in two’s complement notation.
 
 Booth algorithm gives a procedure for multiplying binary integers in signed 2’s complement representation in efficient way, i.e., less number of additions/subtractions required. It operates on the fact that strings of 0’s in the multiplier require no addition but just shifting and a string of 1’s in the multiplier from bit weight 2^k to weight 2^m can be treated as 2^(k+1 ) to 2^m.
