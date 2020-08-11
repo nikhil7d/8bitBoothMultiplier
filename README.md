@@ -8,13 +8,17 @@ As in all multiplication schemes, booth algorithm requires examination of the mu
 The multiplicand is subtracted from the partial product upon encountering the first least significant 1 in a string of 1’s in the multiplier The multiplicand is added to the partial product upon encountering the first 0 (provided that there was a previous ‘1’) in a string of 0’s in the multiplier. The partial product does not change when the multiplier bit is identical to the previous multiplier bit.
 
 ###### Procedure to do the multiplication manually
-Take M as multiplicand.
-Take Q as multiplier.
-Consider a 1-bit register Q-1which is initialized to 0.
-Consider a register A which is initialised to 0.
+1.	Take M as multiplicand.
+2.	Take Q as multiplier.
+3.	Consider a 1-bit register Q-1which is initialized to 0.
+4.	Consider a register A which is initialised to 0.
+
 
 ###### Conditions
-If Q0Q-1 are either 00 or 11 then, perform arithmetic right shift by 1 bit.
-If Q0Q-1=10 then perform A←A-M And then perform arithmetic right shift.
-If Q0Q-1=01 then perform A←A+M And then perform arithmetic right shift.
+1.	If Q0Q-1 are either 00 or 11 then, perform arithmetic right shift by 1 bit.
+2.	If Q0Q-1=10 then perform A←A-M
+And then perform arithmetic right shift.
+3.	If Q0Q-1=01 then perform A←A+M
+And then perform arithmetic right shift.
+
 Booth’s algorithm calculates the product in n steps where n is the number of bits used to represent the numbers.
