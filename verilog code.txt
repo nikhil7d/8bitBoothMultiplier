@@ -1,0 +1,48 @@
+module multiplier(op, busy, mutipicand, multiplier, clk, start);
+output [15:0] op;
+output busy;
+input [7:0] mutipicand, multiplier;
+input clk, start;
+reg [7:0] A, Q, M;
+reg Q_1;
+reg [3:0] count;
+wire [7:0] sum, difference;
+always @(posedge clk)
+begin
+ if (start) begin
+ A <= 8'b0;
+ M <= mutipicand;
+ Q <=  multiplier;
+ Q_1 <= 1'b0;
+ count <= 4'b0;
+ end
+ else begin
+ case ({Q[0], Q_1})
+ 2'b0_1 : {A, Q, Q_1} <= {Q[0], sum, Q};
+ 2'b1_0 : {A, Q, Q_1} <= {Q[0], difference, Q};
+ default: {A, Q, Q_1} <= {Q[0], A, Q};
+ endcase
+ count <= count + 1'b1;
+ end
+end
+alu adder (sum, A, M, 1'b0);
+alu subtracter (difference, A, ~M, 1'b1);
+assign op= {A, Q};
+assign busy = (count < 8);
+endmodule
+//The following is an alu.
+//It is an adder, but capable of subtraction:
+//Recall that subtraction means adding the two's complement--
+//a - b = a + (-b) = a + (inverted b + 1)
+//The 1 will be coming in as cin (carry-in)
+module alu(out, a, b, cin);
+output [7:0] out;
+input [7:0] a;
+input [7:0] b;
+input cin;
+assign out = a + b + cin;
+endmodule
+
+
+
+
