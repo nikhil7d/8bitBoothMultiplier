@@ -21,4 +21,4 @@ And then perform arithmetic right shift.
 3.	If Q0Q-1=01 then perform A←A+M
 And then perform arithmetic right shift.
 
-Booth’s algorithm calculates the product in n steps where n is the number of bits used to represent the numbers.
+**Booth’s algorithm calculates the product in n steps where n is the number of bits used to represent the numbers.**
